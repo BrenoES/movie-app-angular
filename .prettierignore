@@ -2,3 +2,5 @@ package.json
 package-lock.json
 yarn.lock
 dist
+jest.setup.ts
+test-config.helpers.ts
