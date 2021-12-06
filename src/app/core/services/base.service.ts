@@ -22,10 +22,6 @@ export class BaseService<T, DtoT> {
     return this.http.get<T[]>(this.endpoint, { params: { _q: term } });
   }
 
-  count(params: Params = {}): Observable<number> {
-    return this.http.get<number>(`${this.endpoint}/count`, { params });
-  }
-
   create(dto: DtoT | Partial<T>): Observable<T> {
     return this.http.post<T>(this.endpoint, dto);
   }

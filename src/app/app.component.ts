@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { environment } from '@environment/environment';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'movie-app-angular';
+  env = environment;
 }
