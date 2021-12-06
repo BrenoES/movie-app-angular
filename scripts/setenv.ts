@@ -4,6 +4,7 @@ const { argv } = require('yargs');
 declare var process: {
   env: {
     API_URL: string;
+    MOVIE_API_KEY: string;
   };
 };
 
@@ -20,7 +21,8 @@ const targetPath = isProduction
 const environmentFileContent = `
 export const environment = {
    production: ${isProduction},
-   API_URL: '${process.env.API_URL}'
+   API_URL: '${process.env.API_URL}',
+   MOVIE_API_KEY: '${process.env.MOVIE_API_KEY}'
 };
 `;
 // write the content to the respective file

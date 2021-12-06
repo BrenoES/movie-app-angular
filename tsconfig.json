@@ -9,6 +9,7 @@
       "@shared/*": ["src/app/shared/*"],
       "@environment/*": ["src/environments/*"]
     },
+    "types": ["jest", "node"],
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
