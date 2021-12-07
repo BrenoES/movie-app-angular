@@ -2,27 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { BaseService } from '@core/services/base.service';
-interface RequestData {
-  filter: string | null;
-  page: number;
-}
-
-interface Movie {
-  adult: boolean;
-  backdrop_path: string;
-  genre_ids: number[];
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-}
+import { Movie } from '@features/movie/interfaces/movie';
+import {
+  RequestData,
+  ResponseData,
+} from '@features/movie/interfaces/request-data';
 
 @Injectable({
   providedIn: 'root',
@@ -33,7 +17,7 @@ export class MovieService extends BaseService<Movie, Movie> {
   }
   getMovies(requestData: RequestData) {
     const filter = requestData.filter ?? 'popular';
-    return this.http.get(`${this.endpoint}/${filter}`, {
+    return this.http.get<ResponseData<Movie>>(`${this.endpoint}/${filter}`, {
       params: { page: requestData.page },
     });
   }

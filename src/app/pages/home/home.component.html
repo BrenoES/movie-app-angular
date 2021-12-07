@@ -1,1 +1,12 @@
-<p>home works!</p>
+<div class="home__container">
+  <div class="grid">
+    <div class="card" *ngFor="let movie of movies">
+      <div class="card__img">
+        <img [src]="getPosterMovie(movie.poster_path)" alt="" srcset="" />
+      </div>
+      <div class="card__info">
+        <p>{{movie.vote_average}}</p>
+      </div>
+    </div>
+  </div>
+</div>
