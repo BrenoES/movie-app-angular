@@ -1,5 +1,6 @@
 export interface RequestData {
-  filter: string | null;
+  query?: string;
+  filter?: string | null;
   page: number;
 }
 

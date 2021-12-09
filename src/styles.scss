@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~normalize.css';
 
+html {
+  font-family: 'Roboto', sans-serif;
+}
+
 .svg-inline--fa {
   padding: 0px 4px;
 }

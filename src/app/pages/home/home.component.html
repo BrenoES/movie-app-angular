@@ -1,12 +1,28 @@
 <div class="home__container">
   <div class="grid">
-    <div class="card" *ngFor="let movie of movies">
-      <div class="card__img">
-        <img [src]="getPosterMovie(movie.poster_path)" alt="" srcset="" />
-      </div>
-      <div class="card__info">
-        <p>{{movie.vote_average}}</p>
-      </div>
+    <div
+      class="card"
+      *ngFor="let movie of movies | paginate
+    : {
+        itemsPerPage: moviesPerPage,
+        currentPage: page,
+        totalItems: totalMovies
+      }"
+    >
+      <a routerLink="/movie/{{movie.id}}">
+        <img
+          class="card__img"
+          [src]="getPosterMovie(movie.poster_path)"
+          alt=""
+          srcset=""
+        />
+      </a>
+      <p class="card__info">{{movie.vote_average | number: '1.1-1'}}</p>
     </div>
   </div>
+
+  <pagination-controls
+    class="pagination"
+    (pageChange)="getMoviePerPage(page = $event)"
+  ></pagination-controls>
 </div>

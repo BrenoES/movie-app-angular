@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MovieService } from '@features/movie/services/movie.service';
 import { Movie } from '@features/movie/interfaces/movie';
 
-enum MOVIE_DB_IMAGE_URL {
+export enum MOVIE_DB_IMAGE_URL {
   small = 'https://image.tmdb.org/t/p/w185',
   medium = 'https://image.tmdb.org/t/p/w300',
   large = 'https://image.tmdb.org/t/p/w1280',
@@ -16,17 +16,28 @@ enum MOVIE_DB_IMAGE_URL {
 })
 export class HomeComponent implements OnInit {
   movies: Movie[] = [];
+  page = 1;
+  moviesPerPage = 20;
+  totalMovies!: number;
+
   constructor(protected movieService: MovieService) {}
 
   ngOnInit(): void {
-    this.movieService
-      .getMovies({ filter: null, page: 1 })
-      .subscribe((response) => {
-        this.movies = response.results;
-      });
+    this.getMoviePerPage();
   }
 
   getPosterMovie(poster_path: string) {
     return `${MOVIE_DB_IMAGE_URL.medium}/${poster_path}`;
+  }
+
+  getMoviePerPage(page = 1) {
+    this.page = page;
+    this.movieService
+      .getMovies({ filter: null, page: this.page })
+      .subscribe((response) => {
+        this.movies = response.results;
+        this.totalMovies = response.total_results;
+      });
+    window.scrollTo(0, 0);
   }
 }
