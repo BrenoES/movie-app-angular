@@ -8,6 +8,20 @@ const routes: Routes = [
       import('./pages/home/home.module').then((m) => m.HomeModule),
   },
   {
+    path: 'movie',
+    loadChildren: () =>
+      import('./pages/movie-detail/movie-detail.module').then(
+        (m) => m.MovieDetailModule
+      ),
+  },
+  {
+    path: 'search',
+    loadChildren: () =>
+      import('./pages/search-movie/search-movie.module').then(
+        (m) => m.SearchMovieModule
+      ),
+  },
+  {
     path: 'home',
     redirectTo: '',
     pathMatch: 'full',

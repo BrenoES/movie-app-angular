@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { faSearch, faUserLock } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -7,6 +7,11 @@ import { faSearch, faUserLock } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+  @Output() search = new EventEmitter();
   faUserLock = faUserLock;
   faSearch = faSearch;
+
+  searchChange(value: string) {
+    this.search.emit(value);
+  }
 }

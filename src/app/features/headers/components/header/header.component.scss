@@ -6,9 +6,10 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    position: fixed;
+    z-index: 1;
   }
 }
-
 .logo {
   &__title {
     text-decoration: none;
@@ -27,6 +28,7 @@
 
 .search {
   position: relative;
+  display: flex;
   &__icon {
     position: absolute;
     top: 50%;

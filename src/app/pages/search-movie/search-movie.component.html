@@ -1,0 +1,29 @@
+<div class="home__container">
+  <h1>Search Results "{{term}}"</h1>
+  <div class="grid" *ngIf="movies$ | async as movies ">
+    <div
+      class="card"
+      *ngFor="let movie of movies.results | paginate
+      : {
+          itemsPerPage: moviesPerPage,
+          currentPage: page,
+          totalItems: totalMovies
+        }"
+    >
+      <a routerLink="/movie/{{movie.id}}">
+        <img
+          class="card__img fadeIn"
+          [src]="getPosterMovie(movie.poster_path)"
+          alt=""
+          srcset=""
+        />
+      </a>
+      <p class="card__info">{{movie.vote_average | number: '1.1-1'}}</p>
+    </div>
+  </div>
+
+  <pagination-controls
+    class="pagination"
+    (pageChange)="getMoviePerPage(page = $event)"
+  ></pagination-controls>
+</div>

@@ -1,13 +1,15 @@
 <header class="header__container">
   <div class="logo">
-    <a class="logo__title">MovieApp</a>
+    <a [routerLink]="['/']" class="logo__title">MovieApp</a>
   </div>
   <div class="search">
     <fa-icon class="search__icon" [icon]="faSearch"></fa-icon>
     <input
+      #search
       class="search__input"
       type="text"
       placeholder="Search movie by title"
+      (keyup)="searchChange(search.value)"
     />
   </div>
   <div class="sign">

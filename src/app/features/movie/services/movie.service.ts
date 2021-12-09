@@ -8,6 +8,8 @@ import {
   ResponseData,
 } from '@features/movie/interfaces/request-data';
 import { environment } from '@environment/environment';
+import { Credits } from '../interfaces/credits';
+import { Recommendation } from '../interfaces/recommendation';
 
 @Injectable({
   providedIn: 'root',
@@ -37,7 +39,7 @@ export class MovieService extends BaseService<Movie, Movie> {
   }
 
   getActors(id: string) {
-    return this.http.get(`${this.endpoint}/${id}/credits`);
+    return this.http.get<Credits>(`${this.endpoint}/${id}/credits`);
   }
 
   getMovieImages(id: string) {
@@ -47,11 +49,14 @@ export class MovieService extends BaseService<Movie, Movie> {
   }
 
   getRecommendations(id: string) {
-    return this.http.get(`${this.endpoint}/${id}/recommendations`, {
-      params: {
-        language: 'null',
-        page: 1,
-      },
-    });
+    return this.http.get<ResponseData<Recommendation>>(
+      `${this.endpoint}/${id}/recommendations`,
+      {
+        params: {
+          language: 'null',
+          page: 1,
+        },
+      }
+    );
   }
 }
