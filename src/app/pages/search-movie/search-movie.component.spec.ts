@@ -1,6 +1,9 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { SearchMovieComponent } from './search-movie.component';
+import { SearchMovieModule } from './search-movie.module';
 
 describe('SearchMovieComponent', () => {
   let component: SearchMovieComponent;
@@ -8,7 +11,11 @@ describe('SearchMovieComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SearchMovieComponent],
+      imports: [
+        SearchMovieModule,
+        HttpClientTestingModule,
+        RouterTestingModule,
+      ],
     }).compileComponents();
   });
 

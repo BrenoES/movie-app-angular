@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Movie } from '@features/movie/interfaces/movie';
 import { ResponseData } from '@features/movie/interfaces/request-data';
+import { MovieImageService } from '@features/movie/services/movie-image.service';
 import { MovieService } from '@features/movie/services/movie.service';
 import { Observable, tap } from 'rxjs';
-import { MOVIE_DB_IMAGE_URL } from '../home/home.component';
 
 @Component({
   selector: 'app-search-movie',
@@ -20,6 +20,7 @@ export class SearchMovieComponent implements OnInit {
 
   constructor(
     protected movieService: MovieService,
+    protected mFovieImageService: MovieImageService,
     protected activatedRoute: ActivatedRoute
   ) {}
 
@@ -35,7 +36,7 @@ export class SearchMovieComponent implements OnInit {
   }
 
   getPosterMovie(poster_path: string) {
-    return `${MOVIE_DB_IMAGE_URL.medium}/${poster_path}`;
+    return this.mFovieImageService.getMovieImageMedium(poster_path);
   }
 
   getMoviePerPage(page = 1) {
