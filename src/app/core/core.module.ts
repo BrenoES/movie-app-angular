@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { PipesModule } from './pipes/pipes.module';
 
 @NgModule({
@@ -23,6 +24,7 @@ import { PipesModule } from './pipes/pipes.module';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
   ],
 })
 export class CoreModule {}

@@ -1,0 +1,62 @@
+<div class="form">
+  <h1 class="form__title">Sign Up</h1>
+  <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+    <div class="form-control">
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder=" "
+        formControlName="email"
+        [class.invalid]="emailControl?.invalid && (emailControl?.dirty || emailControl?.touched)"
+      />
+      <label for="email">Email</label>
+      <div
+        *ngIf="emailControl?.invalid && (emailControl?.dirty || emailControl?.touched)"
+        class="alert"
+      >
+        <small class="text-danger" *ngIf="emailControl?.errors?.['required']"
+          >Email is required.</small
+        >
+
+        <small class="text-danger" *ngIf="emailControl?.errors?.['email']"
+          >Please enter a valid email.</small
+        >
+      </div>
+    </div>
+    <div class="form-control">
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder=" "
+        formControlName="password"
+        [class.invalid]="passwordControl?.invalid && (passwordControl?.dirty || passwordControl?.touched)"
+      />
+      <label for="password">Password </label>
+      <div
+        *ngIf="passwordControl?.invalid && (passwordControl?.dirty || passwordControl?.touched)"
+        class="alert"
+      >
+        <small class="text-danger" *ngIf="passwordControl?.errors?.['required']"
+          >Password is required.</small
+        >
+      </div>
+    </div>
+    <div class="form__divider">
+      <button
+        class="btn btn__default btn--full"
+        type="submit"
+        [disabled]="signUpForm.invalid"
+      >
+        Create account
+      </button>
+    </div>
+    <div class="form__divider">
+      <span>
+        Already user?
+        <a class="form__link" [routerLink]="['/login']">Sign in</a>
+      </span>
+    </div>
+  </form>
+</div>
