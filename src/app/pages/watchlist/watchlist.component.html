@@ -1,0 +1,15 @@
+<app-container>
+  <h1>My Watchlist</h1>
+  <app-grid *ngIf="movies$ | async as movies">
+    <app-card *ngFor="let movie of movies">
+      <a routerLink="/movie/{{movie.id}}">
+        <app-card-image
+          class="card__img"
+          [src]="getPosterMovie(movie.poster_path)"
+          alt=""
+          srcset=""
+        ></app-card-image>
+      </a>
+    </app-card>
+  </app-grid>
+</app-container>
