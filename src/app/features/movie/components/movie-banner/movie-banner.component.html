@@ -1,0 +1,48 @@
+<div class="movie-banner" *ngIf="movie">
+  <img
+    class="movie-banner__image"
+    [src]="getPosterMovie(movie.poster_path)"
+    [alt]="movie.title"
+    loading="lazy"
+    decoding="async"
+  />
+  <div class="movie-banner__info">
+    <h2>{{movie.title}}</h2>
+    <h6>{{movie.tagline}}</h6>
+    <div>
+      <button
+        class="btn btn__success"
+        *ngIf="auth.isLoggedIn && !isInWatchlist(movie.id)"
+        (click)="addMovieWatchlist(movie)"
+      >
+        <fa-icon [icon]="faBookmark"></fa-icon> Add to my Watchlist
+      </button>
+      <button
+        class="btn btn__default"
+        *ngIf="auth.isLoggedIn && isInWatchlist(movie.id)"
+        (click)="removeMovieWatchlist(movie)"
+      >
+        <fa-icon [icon]="faBookmark"></fa-icon> Remove from my Watchlist
+      </button>
+    </div>
+
+    <p class="movie-banner__rating">{{movie.vote_average}}</p>
+    <p>{{movie.overview}}</p>
+    <div class="movie-banner__genres">
+      <p class="movie-banner__genre" *ngFor="let genre of movie.genres">
+        {{genre.name}}
+      </p>
+    </div>
+  </div>
+  <div class="movie-banner__detail">
+    <div class="item">
+      <p class="item__info">Release Date: {{movie.release_date|date}}</p>
+    </div>
+    <div class="item">
+      <p class="item__info">Duration: {{movie.runtime | minutesToHours}}</p>
+    </div>
+    <div class="item">
+      <p class="item__info">Budget: {{movie.budget|currency}}</p>
+    </div>
+  </div>
+</div>

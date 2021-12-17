@@ -1,0 +1,18 @@
+<div *ngIf="recommendations$ | async as recommendations">
+  <h1>Recommendations</h1>
+  <app-grid>
+    <app-card *ngFor="let recommendation of recommendations">
+      <a routerLink="/movie/{{recommendation.id}}">
+        <app-card-image
+          class="card__img"
+          [src]="getPosterMovie(recommendation.poster_path)"
+          alt=""
+          srcset=""
+        ></app-card-image>
+      </a>
+      <app-card-info>
+        {{recommendation.vote_average | number: '1.1-1'}}
+      </app-card-info>
+    </app-card>
+  </app-grid>
+</div>

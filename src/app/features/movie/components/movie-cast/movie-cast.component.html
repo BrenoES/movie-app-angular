@@ -1,0 +1,20 @@
+<div *ngIf="actors$ | async as actors">
+  <h1>Actors</h1>
+  <div class="cast">
+    <ul class="cast__list">
+      <li class="cast__item" *ngFor="let actor of actors">
+        <img
+          [src]="getImageActor(actor.profile_path)"
+          onerror="this.src='assets/no-profile.png';"
+          alt="{{actor.character}}"
+          width="190"
+          height="280"
+        />
+        <div class="cast__info">
+          <p>{{actor.original_name}}</p>
+          <p class="cast__subtitle">{{actor.character}}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

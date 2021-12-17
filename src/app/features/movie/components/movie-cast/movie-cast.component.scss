@@ -1,0 +1,21 @@
+.cast {
+  display: block;
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  &__list {
+    display: inline-flex;
+  }
+  &__item {
+    margin: 10px;
+    list-style: none;
+    background-color: #000;
+    color: #fff;
+  }
+  &__info {
+    padding: 10px;
+  }
+  &__subtitle {
+    font-size: 0.75rem;
+  }
+}
