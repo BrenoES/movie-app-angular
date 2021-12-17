@@ -1,0 +1,64 @@
+<div class="form">
+  <h1 class="form__title">Sign In</h1>
+  <form [formGroup]="signInForm" (ngSubmit)="signIn()">
+    <div class="form-control">
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder=" "
+        formControlName="email"
+        [class.invalid]="email?.invalid && (email?.dirty || email?.touched)"
+      />
+      <label for="email">Email</label>
+      <div
+        *ngIf="email?.invalid && (email?.dirty || email?.touched)"
+        class="alert"
+      >
+        <small class="text-danger" *ngIf="email?.errors?.['required']"
+          >Email is required.</small
+        >
+
+        <small class="text-danger" *ngIf="email?.errors?.['email']"
+          >Please enter a valid email.</small
+        >
+      </div>
+    </div>
+    <div class="form-control">
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder=" "
+        formControlName="password"
+        [class.invalid]="password?.invalid && (password?.dirty || password?.touched)"
+      />
+      <label for="password">Password </label>
+      <div
+        *ngIf="password?.invalid && (password?.dirty || password?.touched)"
+        class="alert"
+      >
+        <small class="text-danger" *ngIf="password?.errors?.['required']"
+          >Password is required.</small
+        >
+      </div>
+    </div>
+    <div class="form__divider">
+      <button
+        class="btn btn__default btn--full"
+        type="submit"
+        [disabled]="signInForm.invalid"
+      >
+        Sign in
+      </button>
+    </div>
+    <div class="form__divider">
+      <span
+        >Not an user?
+        <a class="form__link" [routerLink]="['/register']"
+          >Create account</a
+        ></span
+      >
+    </div>
+  </form>
+</div>
