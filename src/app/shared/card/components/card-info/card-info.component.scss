@@ -1,0 +1,12 @@
+.card {
+  &__info {
+    position: absolute;
+    bottom: 0;
+    background-color: var(--yellow);
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 0;
+    font-weight: 600;
+  }
+}
