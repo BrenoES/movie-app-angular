@@ -1,78 +1,12 @@
 <main *ngIf="movie$ | async as movie">
-  <div
-    class="backdrop"
-    [ngStyle]="{backgroundImage: 'url(' + getBackdrop(movie.backdrop_path)+ ')'}"
-  ></div>
-  <div class="movie">
-    <div class="movie__container">
-      <img
-        class="movie__image"
-        [src]="getPosterMovie(movie.poster_path)"
-        alt=""
-      />
-      <div class="movie__info">
-        <h2>{{movie.title}}</h2>
-        <h6>{{movie.tagline}}</h6>
-        <p class="movie__rating">{{movie.vote_average}}</p>
-        <p>{{movie.overview}}</p>
-        <div class="movie__genres">
-          <p *ngFor="let genre of movie.genres">{{genre.name}}</p>
-        </div>
-      </div>
-      <div class="movie__detail">
-        <div class="item">
-          <p class="item__info">Release Date: {{movie.release_date|date}}</p>
-        </div>
-        <div class="item">
-          <p class="item__info">Duration: {{movie.runtime | minutesToHours}}</p>
-        </div>
-        <div class="item">
-          <p class="item__info">Budget: {{movie.budget|currency}}</p>
-        </div>
-      </div>
-    </div>
+  <app-backdrop-image
+    [src]="getBackdrop(movie.backdrop_path)"
+  ></app-backdrop-image>
+  <app-container>
+    <app-movie-banner [movie]="movie"></app-movie-banner>
     <div class="extras">
-      <div *ngIf="actors$ | async as actors">
-        <h1>Actors</h1>
-        <div class="cast">
-          <ul class="cast__list">
-            <li class="cast__item" *ngFor="let cast of actors.cast">
-              <img
-                [src]="getImageActor(cast.profile_path)"
-                onerror="this.src='assets/no-profile.png';"
-                alt="{{cast.character}}"
-                width="190"
-                height="280"
-              />
-              <div class="cast__info">
-                <p>{{cast.original_name}}</p>
-                <p class="cast__subtitle">{{cast.character}}</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div *ngIf="recommendations$ | async as recommendations">
-        <h1>Recommendations</h1>
-        <div class="grid">
-          <div
-            class="card"
-            *ngFor="let recommendation of recommendations.results"
-          >
-            <a routerLink="/movie/{{recommendation.id}}">
-              <img
-                class="card__img"
-                [src]="getPosterMovie(recommendation.poster_path)"
-                alt=""
-                srcset=""
-              />
-            </a>
-            <p class="card__info">
-              {{recommendation.vote_average | number: '1.1-1'}}
-            </p>
-          </div>
-        </div>
-      </div>
+      <app-movie-cast></app-movie-cast>
+      <app-movie-recommendation></app-movie-recommendation>
     </div>
-  </div>
+  </app-container>
 </main>
