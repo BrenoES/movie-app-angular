@@ -1,7 +1,6 @@
-<div class="home__container">
-  <div class="grid">
-    <div
-      class="card"
+<app-container>
+  <app-grid *ngIf="movies">
+    <app-card
       *ngFor="let movie of movies | paginate
     : {
         itemsPerPage: moviesPerPage,
@@ -10,19 +9,16 @@
       }"
     >
       <a routerLink="/movie/{{movie.id}}">
-        <img
-          class="card__img"
+        <app-card-image
           [src]="getPosterMovie(movie.poster_path)"
-          alt=""
-          srcset=""
-        />
+          [alt]="movie.title"
+        ></app-card-image>
       </a>
-      <p class="card__info">{{movie.vote_average | number: '1.1-1'}}</p>
-    </div>
-  </div>
-
+      <app-card-info>{{movie.vote_average | number: '1.1-1'}}</app-card-info>
+    </app-card>
+  </app-grid>
   <pagination-controls
     class="pagination"
     (pageChange)="getMoviePerPage(page = $event)"
   ></pagination-controls>
-</div>
+</app-container>
