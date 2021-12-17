@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "meu-backend": {
+      "hosting": {
+        "movie-app-angular": [
+          "meu-backend"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "meu-backend"
+  }
+}

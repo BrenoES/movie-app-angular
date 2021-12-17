@@ -7,14 +7,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(protected route: Router) {}
+  constructor(private router: Router) {}
 
   async searchMovie(term: string) {
     try {
       if (!term) {
-        await this.route.navigate(['/']);
+        await this.router.navigate(['/']);
       } else {
-        await this.route.navigate(['search'], { queryParams: { query: term } });
+        await this.router.navigate(['search'], {
+          queryParams: { query: term },
+        });
       }
     } catch (e) {
       console.error(e);

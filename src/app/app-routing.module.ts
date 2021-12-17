@@ -8,6 +8,11 @@ const routes: Routes = [
       import('./pages/home/home.module').then((m) => m.HomeModule),
   },
   {
+    path: 'login',
+    loadChildren: () =>
+      import('./pages/login/login.module').then((m) => m.LoginModule),
+  },
+  {
     path: 'movie',
     loadChildren: () =>
       import('./pages/movie-detail/movie-detail.module').then(
@@ -15,10 +20,22 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'register',
+    loadChildren: () =>
+      import('./pages/register/register.module').then((m) => m.RegisterModule),
+  },
+  {
     path: 'search',
     loadChildren: () =>
       import('./pages/search-movie/search-movie.module').then(
         (m) => m.SearchMovieModule
+      ),
+  },
+  {
+    path: 'watchlist',
+    loadChildren: () =>
+      import('./pages/watchlist/watchlist.module').then(
+        (m) => m.WatchlistModule
       ),
   },
   {

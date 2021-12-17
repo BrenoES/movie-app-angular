@@ -5,6 +5,13 @@ declare var process: {
   env: {
     API_URL: string;
     MOVIE_API_KEY: string;
+    firebase_apiKey: string;
+    firebase_authDomain: string;
+    firebase_databaseURL: string;
+    firebase_projectId: string;
+    firebase_storageBucket: string;
+    firebase_messagingSenderId: string;
+    firebase_appId: string;
   };
 };
 
@@ -22,7 +29,16 @@ const environmentFileContent = `
 export const environment = {
    production: ${isProduction},
    API_URL: '${process.env.API_URL}',
-   MOVIE_API_KEY: '${process.env.MOVIE_API_KEY}'
+   MOVIE_API_KEY: '${process.env.MOVIE_API_KEY}',
+   firebase: {
+    apiKey:'${process.env.firebase_apiKey}',
+    authDomain:'${process.env.firebase_authDomain}',
+    databaseURL:'${process.env.firebase_databaseURL}',
+    projectId:'${process.env.firebase_projectId}',
+    storageBucket:'${process.env.firebase_storageBucket}',
+    messagingSenderId:'${process.env.firebase_messagingSenderId}',
+    appId:'${process.env.firebase_appId}',
+  }
 };
 `;
 // write the content to the respective file

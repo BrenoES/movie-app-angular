@@ -38,6 +38,12 @@
           {
             "endOfLine": "auto"
           }
+        ],
+        "@typescript-eslint/unbound-method": [
+          "error",
+          {
+            "ignoreStatic": true
+          }
         ]
       }
     },
