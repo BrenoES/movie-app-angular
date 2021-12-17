@@ -9,12 +9,28 @@
       class="search__input"
       type="text"
       placeholder="Search movie by title"
-      (keyup)="searchChange(search.value)"
+      #input
     />
   </div>
+  <div>
+    <a
+      *ngIf="isLoggedIn"
+      [routerLink]="['/watchlist']"
+      class="btn btn__primary"
+    >
+      <fa-icon [icon]="faBookmark"></fa-icon>
+      <span class="hide-sm"> My watchlist</span></a
+    >
+  </div>
   <div class="sign">
-    <button class="btn btn__primary">
-      <fa-icon [icon]="faUserLock"></fa-icon>Login
+    <a *ngIf="!isLoggedIn" [routerLink]="['/login']" class="btn btn__primary">
+      <fa-icon [icon]="faSignInAlt"></fa-icon>
+      <span class="hide-sm">Login</span>
+    </a>
+
+    <button *ngIf="isLoggedIn" class="btn btn__primary" (click)="logout()">
+      <fa-icon [icon]="faSignOutAlt"></fa-icon
+      ><span class="hide-sm">Logout</span>
     </button>
   </div>
 </header>
