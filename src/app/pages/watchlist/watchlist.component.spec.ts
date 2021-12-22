@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MovieWatchlistService } from '@features/movie/services/movie-watchlist.service';
 
 import { WatchlistComponent } from './watchlist.component';
 
@@ -9,6 +10,7 @@ describe('WatchlistComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [WatchlistComponent],
+      providers: [{ provide: MovieWatchlistService, useValue: {} }],
     }).compileComponents();
   });
 

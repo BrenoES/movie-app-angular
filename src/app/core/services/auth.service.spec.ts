@@ -4,6 +4,8 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AuthService } from './auth.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
+import { ToasterService } from './toaster.service';
+import { ToastrServiceStub } from '@tests/stubs';
 
 describe(AuthService.name, () => {
   let service: AuthService;
@@ -12,6 +14,7 @@ describe(AuthService.name, () => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       providers: [
+        { provide: ToasterService, useValue: ToastrServiceStub },
         { provide: AngularFirestore, useValue: {} },
         { provide: AngularFireAuth, useValue: { authState: of() } },
       ],

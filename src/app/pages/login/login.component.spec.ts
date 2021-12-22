@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder } from '@angular/forms';
+import { AuthService } from '@core/services/auth.service';
 
 import { LoginComponent } from './login.component';
 
@@ -9,6 +11,7 @@ describe('LoginComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [LoginComponent],
+      providers: [FormBuilder, { provide: AuthService, useValue: {} }],
     }).compileComponents();
   });
 
