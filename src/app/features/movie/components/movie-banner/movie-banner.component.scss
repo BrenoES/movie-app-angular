@@ -27,15 +27,6 @@
   &__genres {
     display: flex;
   }
-  &__genre {
-    border: 2px solid #ffc107;
-    border-radius: 5px;
-    color: #ffc107;
-    font-weight: 500;
-    height: 1rem;
-    margin: 0px 5px;
-    padding: 8px;
-  }
   &__detail {
     grid-area: detail;
     background-color: #000;

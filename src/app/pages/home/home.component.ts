@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   movies: Movie[] = [];
   page = 1;
   moviesPerPage = 20;
-  totalMovies!: number;
+  totalMovies = 10000;
 
   constructor(
     protected movieService: MovieService,
@@ -33,7 +33,6 @@ export class HomeComponent implements OnInit {
       .getMovies({ filter: null, page: this.page })
       .subscribe((response) => {
         this.movies = response.results;
-        this.totalMovies = response.total_results;
       });
     window.scrollTo(0, 0);
   }

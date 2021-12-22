@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~normalize.css';
+@import './components/button';
+@import './components/form';
+@import './components/input';
+
+:root {
+  --white: #fff;
+  --black: #000;
+  --gray: #a6a6a6;
+  --gray-300: #808080;
+  --green: #1d9704;
+  --green-300: #0f5c00;
+  --red: #ff0000;
+  --yellow: #ffc107;
+  --yellow-300: #c49300;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+  @media screen and (max-width: 600px) {
+    font-size: 62.5%;
+  }
+}
+
+.svg-inline--fa {
+  padding: 0px 4px;
+}
+
+.text-danger {
+  color: var(--red);
+}
+
+.hide-sm {
+  @media screen and (max-width: 798px) {
+    display: none;
+  }
+}
+
+.padding-y {
+  padding: 20px 0;
+}

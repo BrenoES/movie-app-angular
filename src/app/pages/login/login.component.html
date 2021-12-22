@@ -1,49 +1,50 @@
 <div class="form">
   <h1 class="form__title">Sign In</h1>
   <form [formGroup]="signInForm" (ngSubmit)="signIn()">
-    <div class="form-control">
+    <div class="input-group">
       <input
+        class="input-group__input"
         type="email"
         name="email"
         id="email"
         placeholder=" "
         formControlName="email"
-        [class.invalid]="email?.invalid && (email?.dirty || email?.touched)"
+        [class.invalid]="emailControl?.invalid && (emailControl?.dirty || emailControl?.touched)"
       />
-      <label for="email">Email</label>
-      <div
-        *ngIf="email?.invalid && (email?.dirty || email?.touched)"
-        class="alert"
+      <label class="input-group__text" for="email">Email</label>
+      <ng-container
+        *ngIf="emailControl?.invalid && (emailControl?.dirty || emailControl?.touched)"
       >
-        <small class="text-danger" *ngIf="email?.errors?.['required']"
+        <small class="text-danger" *ngIf="emailControl?.hasError('required')"
           >Email is required.</small
         >
 
-        <small class="text-danger" *ngIf="email?.errors?.['email']"
+        <small class="text-danger" *ngIf="emailControl?.hasError('email')"
           >Please enter a valid email.</small
         >
-      </div>
+      </ng-container>
     </div>
-    <div class="form-control">
+    <div class="input-group">
       <input
+        class="input-group__input"
         type="password"
         name="password"
         id="password"
         placeholder=" "
         formControlName="password"
-        [class.invalid]="password?.invalid && (password?.dirty || password?.touched)"
+        [class.invalid]="passwordControl?.invalid && (passwordControl?.dirty || passwordControl?.touched)"
       />
-      <label for="password">Password </label>
-      <div
-        *ngIf="password?.invalid && (password?.dirty || password?.touched)"
+      <label class="input-group__text" for="password">Password </label>
+      <ng-container
+        *ngIf="passwordControl?.invalid && (passwordControl?.dirty || passwordControl?.touched)"
         class="alert"
       >
-        <small class="text-danger" *ngIf="password?.errors?.['required']"
+        <small class="text-danger" *ngIf="passwordControl?.hasError('required')"
           >Password is required.</small
         >
-      </div>
+      </ng-container>
     </div>
-    <div class="form__divider">
+    <div class="padding-y">
       <button
         class="btn btn__default btn--full"
         type="submit"
@@ -52,7 +53,7 @@
         Sign in
       </button>
     </div>
-    <div class="form__divider">
+    <div class="padding-y">
       <span
         >Not an user?
         <a class="form__link" [routerLink]="['/register']"

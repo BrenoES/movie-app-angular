@@ -1,8 +1,9 @@
 <div class="form">
   <h1 class="form__title">Sign Up</h1>
   <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
-    <div class="form-control">
+    <div class="input-group">
       <input
+        class="input-group__input"
         type="email"
         name="email"
         id="email"
@@ -10,22 +11,22 @@
         formControlName="email"
         [class.invalid]="emailControl?.invalid && (emailControl?.dirty || emailControl?.touched)"
       />
-      <label for="email">Email</label>
-      <div
+      <label class="input-group__text" for="email">Email</label>
+      <ng-container
         *ngIf="emailControl?.invalid && (emailControl?.dirty || emailControl?.touched)"
-        class="alert"
       >
-        <small class="text-danger" *ngIf="emailControl?.errors?.['required']"
+        <small class="text-danger" *ngIf="emailControl?.hasError('required')"
           >Email is required.</small
         >
 
-        <small class="text-danger" *ngIf="emailControl?.errors?.['email']"
+        <small class="text-danger" *ngIf="emailControl?.hasError('email')"
           >Please enter a valid email.</small
         >
-      </div>
+      </ng-container>
     </div>
-    <div class="form-control">
+    <div class="input-group">
       <input
+        class="input-group__input"
         type="password"
         name="password"
         id="password"
@@ -33,17 +34,16 @@
         formControlName="password"
         [class.invalid]="passwordControl?.invalid && (passwordControl?.dirty || passwordControl?.touched)"
       />
-      <label for="password">Password </label>
-      <div
+      <label class="input-group__text" for="password">Password </label>
+      <ng-container
         *ngIf="passwordControl?.invalid && (passwordControl?.dirty || passwordControl?.touched)"
-        class="alert"
       >
-        <small class="text-danger" *ngIf="passwordControl?.errors?.['required']"
+        <small class="text-danger" *ngIf="passwordControl?.hasError('required')"
           >Password is required.</small
         >
-      </div>
+      </ng-container>
     </div>
-    <div class="form__divider">
+    <div class="padding-y">
       <button
         class="btn btn__default btn--full"
         type="submit"
@@ -52,7 +52,7 @@
         Create account
       </button>
     </div>
-    <div class="form__divider">
+    <div class="padding-y">
       <span>
         Already user?
         <a class="form__link" [routerLink]="['/login']">Sign in</a>

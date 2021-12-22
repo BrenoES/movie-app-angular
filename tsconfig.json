@@ -7,6 +7,7 @@
       "@core/*": ["src/app/core/*"],
       "@features/*": ["src/app/features/*"],
       "@shared/*": ["src/app/shared/*"],
+      "@tests/*": ["src/app/tests/*"],
       "@environment/*": ["src/environments/*"]
     },
     "types": ["jest", "node"],

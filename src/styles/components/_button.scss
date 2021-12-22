@@ -1,0 +1,52 @@
+button:disabled,
+button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.btn {
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 5px 5px;
+  border: none;
+  margin-right: 10px;
+  @media screen and (max-width: 600px) {
+    padding: 5px;
+    font-size: 1.5rem;
+  }
+
+  &__primary {
+    color: var(--yellow);
+    background-color: transparent;
+    border-color: var(--yellow);
+
+    border: 2px solid;
+    &:hover {
+      color: var(--yellow-300);
+      border-color: var(--yellow-300);
+    }
+  }
+
+  &__default {
+    color: var(--white);
+    background-color: var(--gray);
+    &:hover {
+      background-color: var(--gray-300);
+    }
+  }
+
+  &__success {
+    color: var(--white);
+    background-color: var(--green);
+    &:hover {
+      background-color: var(--green-300);
+    }
+  }
+
+  &--full {
+    width: 100%;
+  }
+}

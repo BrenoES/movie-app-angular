@@ -12,18 +12,18 @@ export enum MOVIE_DB_IMAGE_URL {
 })
 export class MovieImageService {
   getMovieImageOriginal(path: string) {
-    return `${MOVIE_DB_IMAGE_URL.original}/${path}`;
+    return `${MOVIE_DB_IMAGE_URL.original}${path}`;
   }
 
   getMovieImageLarge(path: string) {
-    return `${MOVIE_DB_IMAGE_URL.large}/${path}`;
+    return `${MOVIE_DB_IMAGE_URL.large}${path}`;
   }
 
   getMovieImageMedium(path: string) {
-    return `${MOVIE_DB_IMAGE_URL.medium}/${path}`;
+    return `${MOVIE_DB_IMAGE_URL.medium}${path}`;
   }
 
   getMovieImageSmall(path: string) {
-    return `${MOVIE_DB_IMAGE_URL.small}/${path}`;
+    return `${MOVIE_DB_IMAGE_URL.small}${path}`;
   }
 }

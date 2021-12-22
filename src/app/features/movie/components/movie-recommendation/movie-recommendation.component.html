@@ -1,18 +1,23 @@
-<div *ngIf="recommendations$ | async as recommendations">
-  <h1>Recommendations</h1>
-  <app-grid>
-    <app-card *ngFor="let recommendation of recommendations">
-      <a routerLink="/movie/{{recommendation.id}}">
-        <app-card-image
-          class="card__img"
-          [src]="getPosterMovie(recommendation.poster_path)"
-          alt=""
-          srcset=""
-        ></app-card-image>
-      </a>
-      <app-card-info>
-        {{recommendation.vote_average | number: '1.1-1'}}
-      </app-card-info>
-    </app-card>
-  </app-grid>
-</div>
+<ng-container *ngIf="recommendations$ | async as recommendations">
+  <ng-container *ngIf="recommendations.length">
+    <h1>Recommendations</h1>
+    <app-grid>
+      <app-card
+        data-testid="card-recommendation"
+        *ngFor="let recommendation of recommendations"
+      >
+        <a [id]="recommendation.id" routerLink="/movie/{{recommendation.id}}">
+          <app-card-image
+            class="card__img"
+            [src]="getPosterMovie(recommendation.poster_path)"
+            [alt]="recommendation.poster_path"
+          ></app-card-image>
+          {{recommendation.title}}
+        </a>
+        <app-card-info>
+          {{recommendation.vote_average | number: '1.1-1'}}
+        </app-card-info>
+      </app-card>
+    </app-grid>
+  </ng-container>
+</ng-container>

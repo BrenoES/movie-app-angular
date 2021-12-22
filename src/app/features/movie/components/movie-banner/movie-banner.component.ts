@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DocumentData } from '@angular/fire/compat/firestore';
 import { AuthService } from '@core/services/auth.service';
 import { UserService } from '@core/services/user.service';
 import { Movie } from '@features/movie/interfaces/movie';
@@ -17,7 +16,7 @@ export class MovieBannerComponent implements OnInit {
 
   faBookmark = faBookmark;
 
-  watchlist: DocumentData[] = [];
+  watchlist: Movie[] = [];
 
   constructor(
     protected movieImageService: MovieImageService,
@@ -49,6 +48,7 @@ export class MovieBannerComponent implements OnInit {
 
   getMovieWatchlist() {
     const user = this.userService.user;
+
     if (user) {
       const userId = user.uid;
       this.movieWatchlistService

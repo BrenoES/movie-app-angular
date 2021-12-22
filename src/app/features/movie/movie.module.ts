@@ -8,6 +8,7 @@ import { LayoutModule } from '@shared/layout/layout.module';
 import { CardModule } from '@shared/card/card.module';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { LabelModule } from '@shared/label/label.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     PipesModule,
     LayoutModule,
     CardModule,
+    LabelModule,
   ],
   exports: [
     MovieBannerComponent,

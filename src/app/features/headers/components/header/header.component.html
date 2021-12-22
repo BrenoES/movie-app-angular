@@ -12,7 +12,8 @@
       #input
     />
   </div>
-  <div>
+
+  <div class="sign">
     <a
       *ngIf="isLoggedIn"
       [routerLink]="['/watchlist']"
@@ -21,8 +22,6 @@
       <fa-icon [icon]="faBookmark"></fa-icon>
       <span class="hide-sm"> My watchlist</span></a
     >
-  </div>
-  <div class="sign">
     <a *ngIf="!isLoggedIn" [routerLink]="['/login']" class="btn btn__primary">
       <fa-icon [icon]="faSignInAlt"></fa-icon>
       <span class="hide-sm">Login</span>

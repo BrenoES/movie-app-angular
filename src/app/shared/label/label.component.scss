@@ -1,0 +1,11 @@
+:host.label {
+  border-radius: 5px;
+  font-weight: 500;
+  height: 1rem;
+  margin: 0px 5px;
+  padding: 8px;
+  &.label-default {
+    background-color: var(--gray-300);
+    color: var(--white);
+  }
+}

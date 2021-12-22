@@ -1,0 +1,46 @@
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+  &__input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: var(--white);
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid var(--white);
+    outline: none;
+    background: transparent;
+
+    &:focus ~ label,
+    &.ng-valid ~ label,
+    &:not(:placeholder-shown) ~ label {
+      top: -20px;
+      left: 0;
+      color: var(--yellow);
+      font-size: 12px;
+    }
+    &:-webkit-autofill {
+      -webkit-text-fill-color: var(--white) !important;
+      box-shadow: 0 0 0px 1000px var(--black) inset;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+    &.error {
+      border-color: var(--red);
+    }
+  }
+  &__text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: var(--white);
+    pointer-events: none;
+    transition: 0.5s;
+  }
+
+  .invalid {
+    border-bottom-color: var(--red);
+  }
+}

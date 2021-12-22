@@ -1,4 +1,4 @@
-<div class="movie-banner" *ngIf="movie">
+<div data-testid="movie-banner" class="movie-banner" *ngIf="movie">
   <img
     class="movie-banner__image"
     [src]="getPosterMovie(movie.poster_path)"
@@ -28,10 +28,9 @@
 
     <p class="movie-banner__rating">{{movie.vote_average}}</p>
     <p>{{movie.overview}}</p>
+
     <div class="movie-banner__genres">
-      <p class="movie-banner__genre" *ngFor="let genre of movie.genres">
-        {{genre.name}}
-      </p>
+      <app-label *ngFor="let genre of movie.genres"> {{genre.name}} </app-label>
     </div>
   </div>
   <div class="movie-banner__detail">

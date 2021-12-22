@@ -1,6 +1,6 @@
-<app-container>
+<app-container *ngIf="movies$ | async as movies">
   <h1>My Watchlist</h1>
-  <app-grid *ngIf="movies$ | async as movies">
+  <app-grid *ngIf="movies.length > 0">
     <app-card *ngFor="let movie of movies">
       <a routerLink="/movie/{{movie.id}}">
         <app-card-image
@@ -12,4 +12,9 @@
       </a>
     </app-card>
   </app-grid>
+  <div *ngIf="movies.length === 0" class="list-empty">
+    <img src="https://img.icons8.com/bubbles/100/000000/clips-apperance.png" />
+    <h3>No Movie listed yet</h3>
+    <p>Add movie to your watch list</p>
+  </div>
 </app-container>
